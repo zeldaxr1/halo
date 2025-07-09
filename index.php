@@ -1,108 +1,4 @@
-<?php
 
-
-session_start();
-
-
-
-
-if( @$_SESSION['usuario']==null){
-    
-
-    
-  
-    
-}
-else{
-    
-    header("Location:principal.php");
-    
-}
-
-
-
-if(isset($_POST['entrar'])){
-    
-    
-    
-
-
-$a=$_POST['user'];
-
-$b=$_POST['pass'];
-
-
-    
-    
- $_SESSION['usuario']=$a;
-    
-     $con=mysqli_connect('localhost','root','','prueba');
-    
-    
-    
-    
-    
-    $result=mysqli_query($con,"select * from usuarios where nombre='$a' and pass='$b'");
-    
-    
-    $row=mysqli_num_rows($result);
-       
-    
-    
-   
-        
-       if($row>0){
-            
-            header("Location:principal.php");
-            
-       }
-    
-        else{
-            
-             $_SESSION['usuario']=0;
-            
-            
-            
-            $txt='<p style="color:red;">Acceso Denegado</p>';
-            
-        }
-    
-    
-        
-    
-    
-        
-    
-        mysqli_close($con);
-    
-    
-        }
-        
-    
-    
-   
-    
-    
-  
-    
-         
-
-
-
-
-
-
-    
- 
-    
-    
-
-
-
-
-
-
-?>
 
 
 
@@ -141,7 +37,7 @@ $b=$_POST['pass'];
 <div class="panel">
 
     
-   <?php echo @$txt; // texto de acceso denegado ?>
+   
    
 <form action="index.php" method="post">
 
